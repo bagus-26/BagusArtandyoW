@@ -2,19 +2,46 @@
 
 import { useState } from 'react';
 import { PortofolioData } from '../data/PortofolioData';
-import { Mail, Send, Github, Linkedin, Instagram, MapPin, CheckCircle2 } from 'lucide-react';
+import { Mail, Send, Github, Linkedin, Instagram, MapPin, CheckCircle2, Loader2, AlertCircle } from 'lucide-react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 4000);
+    setLoading(true);
+    setErrorMsg('');
+
+    try {
+      const response = await fetch('https://formspree.io/f/mljrezgr', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setSubmitted(false), 5000);
+      } else {
+        const data = await response.json();
+        if (data && data.errors && data.errors.length > 0) {
+          setErrorMsg(data.errors.map(err => err.message).join(', '));
+        } else {
+          setErrorMsg('Gagal mengirim pesan. Silakan coba lagi nanti.');
+        }
+      }
+    } catch (err) {
+      setErrorMsg('Terjadi kesalahan jaringan. Silakan periksa koneksi Anda.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -86,46 +113,84 @@ export default function Contact() {
                 <div className="p-6 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-3">
                   <CheckCircle2 className="w-10 h-10 text-emerald-500 mx-auto" />
                   <p className="text-stone-700 font-semibold">Pesan terkirim!</p>
-                  <p className="text-stone-500 text-sm">Terima kasih, saya akan segera merespons.</p>
+                  <p className="text-stone-500 text-sm">Terima kasih, saya akan segera merespons ke email Anda.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
+                  {errorMsg && (
+                    <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-sm flex items-center gap-2">
+                      <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                      <span>{errorMsg}</span>
+                    </div>
+                  )}
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs text-stone-400 mb-2">Nama</label>
-                      <input type="text" required value={formData.name}
+                      <input
+                        type="text"
+                        name="name"
+                        required
+                        value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="Nama lengkap"
-                        className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 text-stone-700 placeholder-stone-400 focus:outline-none focus:border-amber-400 transition-colors text-sm" />
+                        className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 text-stone-700 placeholder-stone-400 focus:outline-none focus:border-amber-400 transition-colors text-sm"
+                      />
                     </div>
                     <div>
                       <label className="block text-xs text-stone-400 mb-2">Email</label>
-                      <input type="email" required value={formData.email}
+                      <input
+                        type="email"
+                        name="email"
+                        required
+                        value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="email@contoh.com"
-                        className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 text-stone-700 placeholder-stone-400 focus:outline-none focus:border-amber-400 transition-colors text-sm" />
+                        className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 text-stone-700 placeholder-stone-400 focus:outline-none focus:border-amber-400 transition-colors text-sm"
+                      />
                     </div>
                   </div>
 
                   <div>
                     <label className="block text-xs text-stone-400 mb-2">Subjek</label>
-                    <input type="text" required value={formData.subject}
+                    <input
+                      type="text"
+                      name="subject"
+                      required
+                      value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                       placeholder="Perihal pesan"
-                      className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 text-stone-700 placeholder-stone-400 focus:outline-none focus:border-amber-400 transition-colors text-sm" />
+                      className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 text-stone-700 placeholder-stone-400 focus:outline-none focus:border-amber-400 transition-colors text-sm"
+                    />
                   </div>
 
                   <div>
                     <label className="block text-xs text-stone-400 mb-2">Pesan</label>
-                    <textarea rows={5} required value={formData.message}
+                    <textarea
+                      rows={5}
+                      name="message"
+                      required
+                      value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Tulis pesan Anda di sini..."
-                      className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 text-stone-700 placeholder-stone-400 focus:outline-none focus:border-amber-400 transition-colors text-sm resize-none" />
+                      className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 text-stone-700 placeholder-stone-400 focus:outline-none focus:border-amber-400 transition-colors text-sm resize-none"
+                    />
                   </div>
 
-                  <button type="submit"
-                    className="w-full py-3.5 rounded-xl bg-stone-800 text-white font-semibold text-sm shadow-md hover:bg-stone-700 hover:scale-[1.01] transition-all flex items-center justify-center gap-2">
-                    <Send className="w-4 h-4" /> Kirim
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full py-3.5 rounded-xl bg-stone-800 text-white font-semibold text-sm shadow-md hover:bg-stone-700 hover:scale-[1.01] transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                  >
+                    {loading ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" /> Mengirim...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" /> Kirim Pesan
+                      </>
+                    )}
                   </button>
                 </form>
               )}

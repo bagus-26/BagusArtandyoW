@@ -20,10 +20,22 @@ export const PortofolioData = {
     { name: "Laravel",    category: "Web Framework",  logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg" },
   ],
 
+  platforms: [
+    { name: "Windows", category: "Platform Utama", isMain: true, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/windows11/windows11-original.svg" },
+    { name: "macOS", category: "Ecosystem / OS", isMain: false, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apple/apple-original.svg" },
+    { name: "Linux", category: "Ecosystem / OS", isMain: false, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" },
+    { name: "NVIDIA", category: "Hardware & GPU", isMain: false, logo: "https://cdn.simpleicons.org/nvidia/76B900" }
+  ],
+
   skills: {
     management: ["Agile & Scrum", "Requirements Gathering", "UML & Flowcharting", "System Architecture", "Software Testing & QA"],
     frontend: ["React.js", "Next.js", "Tailwind CSS", "HTML5 / CSS3", "UI/UX Prototyping"],
     tools: ["Git & GitHub", "Figma", "Jira & Trello", "Postman", "VS Code", "MySQL / PostgreSQL"]
+  },
+
+  interest: {
+    it: ["Artificial Intelligence (AI)", "Web Development", "Mobile Development", "Machine Learning", "UI/UX Design"],
+    non_it: ["Music", "Travel", "Run", "Swimming"]
   },
 
   socials: {

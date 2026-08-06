@@ -50,8 +50,8 @@ export default function Projects() {
                     <span
                       key={idx}
                       className={`px-2.5 py-1 rounded-md text-xs font-medium border ${
-                        member === 'Bagus'
-                          ? 'bg-amber-50 border-amber-300 text-amber-700'
+                        member.includes('Bagus')
+                          ? 'bg-amber-50 border-amber-300 text-amber-700 font-semibold'
                           : 'bg-stone-50 border-stone-200 text-stone-500'
                       }`}
                     >

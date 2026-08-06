@@ -37,16 +37,16 @@ export const PortofolioData = {
     {
       id: 1,
       title: "E-INVENT NOC",
-      category: "System Analyst",
+      category: "Project Manager",
       subtitle: "Sistem Informasi ERP Network Operation Center SMKN 4 Malang",
-      desc: "Sistem Informasi Enterprise Resource Planning berbasis web yang dirancang untuk mengoptimalkan pengelolaan Network Operation Center di SMKN 4 Malang. Dikembangkan bersama tim Kelompok 1 dalam program JESICA, Sarjana Informatika ITSK Soepraoen.",
-      team: ["Fichri", "Auril", "Anggun", "Arya", "Bagus", "Sandy"],
-      tags: ["PHP", "MySQL", "System Analysis", "ERP", "Web"],
+      desc: "Sistem Informasi Enterprise Resource Planning berbasis web yang dirancang untuk mengoptimalkan pengelolaan Network Operation Center di SMKN 4 Malang. Dikembangkan bersama tim Kelompok 1 sebagai Tugas Mata Kuliah Sistem Informasi, Sarjana Informatika ITSK Soepraoen, dengan peran saya sebagai Project Manager.",
+      team: ["Fichri", "Auril", "Anggun", "Arya", "Bagus (Project Manager)", "Sandy"],
+      tags: ["Project Management", "System Analysis", "PHP", "MySQL", "ERP", "Web"],
       image: "/erp.jpeg",
       liveUrl: "#",
       githubUrl: "#",
       institution: "ITSK RS dr. Soepraoen Malang",
-      program: "Program JESICA - Sarjana Informatika"
+      program: "Tugas Mata Kuliah Sistem Informasi - Sarjana Informatika"
     }
   ]
 };

@@ -33,7 +33,12 @@ export default function Footer() {
 
           <button
             type="button"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={() =>
+              window.scrollTo({
+                top: 0,
+                behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+              })
+            }
             className="inline-flex min-h-11 items-center gap-1.5 text-[13px] text-muted transition-colors hover:text-ink"
           >
             Kembali ke atas
@@ -47,7 +52,7 @@ export default function Footer() {
         data-reveal="clip"
         className="mt-10 select-none overflow-hidden whitespace-nowrap pb-[0.08em] text-[10cqw] font-medium leading-[0.9] tracking-[-0.06em] text-ink md:mt-16"
       >
-        Bagus Artandyo
+        <span className="block">Bagus Artandyo</span>
       </div>
     </footer>
   );

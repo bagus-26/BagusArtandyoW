@@ -200,14 +200,18 @@ html[data-motion="ready"] [data-reveal].is-in {
   opacity: 1;
   transform: none;
 }
+/* Clip a child, not the observed element: IntersectionObserver counts the
+   target's own clip-path as clipped, so it would never fire. */
 html[data-motion="ready"] [data-reveal="clip"] {
   opacity: 1;
   transform: none;
+}
+html[data-motion="ready"] [data-reveal="clip"] > * {
   clip-path: inset(0 0 100% 0);
   transition: clip-path 1.15s var(--ease);
   transition-delay: calc(var(--d, 0) * 90ms);
 }
-html[data-motion="ready"] [data-reveal="clip"].is-in {
+html[data-motion="ready"] [data-reveal="clip"].is-in > * {
   clip-path: inset(0 0 0 0);
 }
 

@@ -17,6 +17,12 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="anonymous" />
         <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.dataset.motion='ready';setTimeout(function(){if(!window.__pfMotion)delete document.documentElement.dataset.motion},4000)}}catch(e){}",
+          }}
+        />
       </head>
       <body className="bg-paper text-ink antialiased selection:bg-ink selection:text-paper min-h-screen relative overflow-x-hidden">
         {children}

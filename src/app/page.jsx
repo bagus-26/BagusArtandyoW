@@ -1,4 +1,5 @@
 import Navbar from '../components/navbar';
+import Motion from '../components/motion';
 import Hero from '../components/hero';
 import Skills from '../components/skills';
 import Projects from '../components/projects';
@@ -8,6 +9,7 @@ import Footer from '../components/footer';
 export default function Home() {
   return (
     <main className="min-h-screen relative">
+      <Motion />
       <Navbar />
       <Hero />
       <Skills />

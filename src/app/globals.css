@@ -122,18 +122,93 @@ body {
   }
 }
 
-@keyframes rise {
+@keyframes mask-up {
+  from {
+    transform: translateY(108%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(22px);
   }
   to {
     opacity: 1;
     transform: none;
   }
 }
-.rise {
-  animation: rise 0.9s cubic-bezier(0.19, 1, 0.22, 1) both;
+@keyframes fade-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.load-mask {
+  animation: mask-up 1.15s cubic-bezier(0.19, 1, 0.22, 1) both;
+}
+.load-up {
+  animation: fade-up 0.95s cubic-bezier(0.19, 1, 0.22, 1) both;
+}
+.load-down {
+  animation: fade-down 0.7s cubic-bezier(0.23, 1, 0.32, 1) both;
+  animation-delay: calc(60ms + var(--i, 0) * 55ms);
+}
+.menu-in {
+  animation: menu-in 0.28s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+.marquee-track {
+  animation: marquee 36s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+html[data-motion="ready"] [data-reveal] {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.85s var(--ease), transform 0.95s var(--ease);
+  transition-delay: calc(var(--d, 0) * 90ms);
+}
+html[data-motion="ready"] [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+html[data-motion="ready"] [data-reveal="clip"] {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 1.15s var(--ease);
+  transition-delay: calc(var(--d, 0) * 90ms);
+}
+html[data-motion="ready"] [data-reveal="clip"].is-in {
+  clip-path: inset(0 0 0 0);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -146,5 +221,14 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+  .marquee-track {
+    animation: none !important;
+  }
+  html[data-motion] [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    transition: none !important;
   }
 }

@@ -1,23 +1,23 @@
 export const PortofolioData = {
   name: "Bagus Artandyo Witjaksono",
-  roles: ["Project Manager", "System Analyst", "Front-End Developer"],
+  roles: ["Project Manager", "System Analyst", "Mobile Developer", "Backend Developer", "Machine Learning Engineer"],
   tagline: "Mahasiswa Sarjana Informatika ITSK RS dr. Soepraoen Malang.",
   bio: "Try not to become a man of success, but rather try to become a man of value. — Albert Einstein",
   avatar: "/avatar.jpeg",
   resumeLink: "#contact",
 
   languages: [
-    { name: "Python",     category: "Backend / Data", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" },
-    { name: "Java",       category: "Enterprise",     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" },
-    { name: "Dart",       category: "Mobile Dev",     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg" },
-    { name: "Flutter",    category: "Mobile Dev",     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg" },
-    { name: "JavaScript", category: "Front-End",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" },
-    { name: "HTML5",      category: "Front-End",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" },
-    { name: "CSS3",       category: "Front-End",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" },
-    { name: "PHP",        category: "Web",            logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" },
-    { name: "React",      category: "Front-End",      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
-    { name: "MySQL",      category: "Database",       logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" },
-    { name: "Laravel",    category: "Web Framework",  logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg" },
+    { name: "Python", category: "Backend / Data", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" },
+    { name: "Java", category: "Enterprise", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" },
+    { name: "Dart", category: "Mobile Dev", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg" },
+    { name: "Flutter", category: "Mobile Dev", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg" },
+    { name: "JavaScript", category: "Front-End", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" },
+    { name: "HTML5", category: "Front-End", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" },
+    { name: "CSS3", category: "Front-End", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" },
+    { name: "PHP", category: "Web", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" },
+    { name: "React", category: "Front-End", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
+    { name: "MySQL", category: "Database", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" },
+    { name: "Laravel", category: "Web Framework", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg" },
   ],
 
   platforms: [
@@ -35,7 +35,7 @@ export const PortofolioData = {
 
   interest: {
     it: ["Artificial Intelligence (AI)", "Web Development", "Mobile Development", "Machine Learning", "UI/UX Design"],
-    non_it: ["Music", "Travel", "Run", "Swimming"]
+    non_it: ["Music", "Travel", "Run", "Swimming", "Game"]
   },
 
   socials: {
@@ -59,6 +59,36 @@ export const PortofolioData = {
       githubUrl: "#",
       institution: "ITSK RS dr. Soepraoen Malang",
       program: "Tugas Mata Kuliah Sistem Informasi - Sarjana Informatika"
+    },
+    {
+      id: 2,
+      title: "RESIQ",
+      category: "Mobile Developer",
+      subtitle: "Aplikasi Android deteksi sampah berbasis AI",
+      desc: "Aplikasi Android yang menggunakan AI untuk mengidentifikasi jenis sampah dan memberikan poin berdasarkan hasil pemindaian.",
+      tags: ["Android", "AI", "Waste Detection"],
+      liveUrl: "",
+      githubUrl: ""
+    },
+    {
+      id: 3,
+      title: "CareVisitMonitor",
+      category: "Backend Developer",
+      subtitle: "Pemantauan layanan kesehatan",
+      desc: "Mengimplementasikan rute REST API, model database, dan integrasi frontend untuk pemantauan layanan kesehatan.",
+      tags: ["REST API", "Database", "Frontend", "Healthcare"],
+      liveUrl: "",
+      githubUrl: ""
+    },
+    {
+      id: 4,
+      title: "LimbahLoka",
+      category: "System Analyst",
+      subtitle: "PLAY IT! 2026 Hackathon",
+      desc: "Merumuskan arsitektur teknis aplikasi yang mengubah limbah organik pasar menjadi kompos dan pakan.",
+      tags: ["Hackathon", "System Architecture", "Waste Management"],
+      liveUrl: "",
+      githubUrl: ""
     }
   ]
 };

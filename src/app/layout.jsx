@@ -2,14 +2,14 @@ import './globals.css';
 
 export const metadata = {
   title: 'Bagus Artandyo Witjaksono - Portfolio',
-  description: 'Personal Portfolio of Bagus Artandyo Witjaksono | Project Manager, System Analyst, and Front-End Developer.',
-  keywords: ['Bagus Artandyo Witjaksono', 'Project Manager', 'System Analyst', 'Front End Developer', 'React', 'Next.js', 'Python', 'Dart', 'Java', 'PHP'],
+  description: 'Personal Portfolio of Bagus Artandyo Witjaksono | Project Manager, System Analyst, Backend Developer, Mobile Developer, Machine Learning Engineer | Sarjana Informatika ITSK RS dr. Soepraoen Malang',
+  keywords: ['Bagus Artandyo Witjaksono', 'Project Manager', 'System Analyst', 'Backend Developer', 'Mobile Developer', 'Machine Learning Engineer'],
   authors: [{ name: 'Bagus Artandyo Witjaksono' }],
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="id" className="scroll-smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

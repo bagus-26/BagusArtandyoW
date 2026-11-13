@@ -126,8 +126,9 @@ export default function Contact() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs text-stone-400 mb-2">Nama</label>
+                      <label htmlFor="contact-name" className="block text-xs text-stone-400 mb-2">Nama</label>
                       <input
+                        id="contact-name"
                         type="text"
                         name="name"
                         required
@@ -138,8 +139,9 @@ export default function Contact() {
                       />
                     </div>
                     <div>
-                      <label className="block text-xs text-stone-400 mb-2">Email</label>
+                      <label htmlFor="contact-email" className="block text-xs text-stone-400 mb-2">Email</label>
                       <input
+                        id="contact-email"
                         type="email"
                         name="email"
                         required
@@ -152,8 +154,9 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label className="block text-xs text-stone-400 mb-2">Subjek</label>
+                    <label htmlFor="contact-subject" className="block text-xs text-stone-400 mb-2">Subjek</label>
                     <input
+                      id="contact-subject"
                       type="text"
                       name="subject"
                       required
@@ -165,8 +168,9 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label className="block text-xs text-stone-400 mb-2">Pesan</label>
+                    <label htmlFor="contact-message" className="block text-xs text-stone-400 mb-2">Pesan</label>
                     <textarea
+                      id="contact-message"
                       rows={5}
                       name="message"
                       required

@@ -1,88 +1,71 @@
 'use client';
 
 import { PortofolioData } from '../data/PortofolioData';
-import { ArrowRight, Quote, Mail } from 'lucide-react';
+
+const expertise = [
+  'Manajemen proyek',
+  'Analisis sistem',
+  'Backend',
+  'Mobile',
+  'Machine learning',
+  'UI/UX',
+];
 
 export default function Hero() {
   return (
-    <section id="about" className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
-      {/* Subtle Warm Glow */}
-      <div className="ambient-glow top-20 left-1/4 w-96 h-96 bg-amber-400/20" />
-      <div className="ambient-glow top-40 right-10 w-80 h-80 bg-orange-300/15" />
+    <section id="about" className="shell relative pt-32 md:pt-[21vh]">
+      <h1
+        aria-label={PortofolioData.name}
+        className="rise text-[14vw] font-medium uppercase leading-[0.88] tracking-[-0.05em] md:text-[10vw]"
+      >
+        <span aria-hidden="true" className="block md:flex md:justify-between md:gap-[0.18em]">
+          <span className="block">Bagus</span>
+          <span className="block">Artandyo</span>
+        </span>
+        <span aria-hidden="true" className="block md:text-right">
+          Witjaksono
+        </span>
+      </h1>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <a
+          href={`mailto:${PortofolioData.socials.email}`}
+          className="group inline-flex w-fit items-baseline text-sm text-muted transition-colors hover:text-ink md:text-base"
+        >
+          <span className="border-b border-transparent pb-0.5 transition-colors group-hover:border-ink">
+            {PortofolioData.socials.email}
+          </span>
+        </a>
+        <p className="eyebrow max-w-[44ch] text-balance leading-relaxed sm:text-right">
+          Project manager &amp; system analyst — membangun sistem dari kebutuhan sampai rilis
+        </p>
+      </div>
 
-          {/* Left Column */}
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+      <div className="mt-20 grid gap-10 md:mt-[13vh] lg:grid-cols-12 lg:items-end">
+        <p className="text-[clamp(26px,3.3vw,46px)] leading-[1.16] tracking-[-0.03em] text-muted lg:col-span-6">
+          <span className="text-ink">Bagus Artandyo</span> adalah project manager dan system
+          analyst dengan ketertarikan pada sistem yang rumit — dari menggali kebutuhan sampai
+          membangun produk yang benar-benar dipakai.
+        </p>
 
-            <div>
-              <h2 className="text-stone-400 text-base md:text-lg font-medium mb-2">
-                Halo, saya
-              </h2>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
-                <span className="gradient-text">{PortofolioData.name}</span>
-              </h1>
-            </div>
+        <div className="lg:col-span-2">
+          <img
+            src={PortofolioData.avatar}
+            alt={`Potret ${PortofolioData.name}`}
+            className="aspect-[4/5] w-40 rounded-2xl object-cover object-top md:w-48 lg:w-full"
+          />
+          <span className="eyebrow mt-2 block">Malang, ID — 2026</span>
+        </div>
 
-            {/* Roles */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 pt-1">
-              {PortofolioData.roles.map((role, idx) => (
-                <span
-                  key={idx}
-                  className="px-3.5 py-1.5 rounded-lg bg-white text-xs sm:text-sm font-medium text-stone-600 border border-stone-200 shadow-sm"
-                >
-                  {role}
-                </span>
-              ))}
-            </div>
-
-            {/* Tagline */}
-            <p className="text-stone-500 text-sm sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0">
-              {PortofolioData.tagline}
-            </p>
-
-            {/* Quote */}
-            <div className="p-4 sm:p-5 rounded-2xl bg-white border border-stone-200 shadow-sm relative">
-              <Quote className="w-6 h-6 text-amber-400/60 absolute -top-2 -left-2" />
-              <p className="text-stone-500 italic text-sm sm:text-base pl-2">
-                "{PortofolioData.bio}"
-              </p>
-            </div>
-
-            {/* CTA */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
-              <a
-                href="#projects"
-                className="flex items-center gap-2 px-6 py-3 rounded-xl bg-stone-800 text-white font-semibold text-sm shadow-md hover:bg-stone-700 hover:scale-[1.02] transition-all"
-              >
-                Lihat Proyek
-                <ArrowRight className="w-4 h-4" />
-              </a>
-              <a
-                href={`mailto:${PortofolioData.socials.email}`}
-                className="flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-stone-600 font-semibold text-sm border border-stone-200 shadow-sm hover:bg-stone-50 transition-all"
-              >
-                <Mail className="w-4 h-4 text-amber-600" />
-                Hubungi Saya
-              </a>
-            </div>
-          </div>
-
-          {/* Right Column: Photo */}
-          <div className="lg:col-span-5 flex justify-center">
-            <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-88 lg:h-88">
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-amber-300 via-orange-200 to-stone-200 opacity-50 blur-xl" />
-              <div className="relative w-full h-full rounded-3xl bg-white p-3 border border-stone-200 shadow-lg overflow-hidden">
-                <img
-                  src={PortofolioData.avatar}
-                  alt={PortofolioData.name}
-                  className="w-full h-full object-cover object-top rounded-2xl"
-                />
-              </div>
-            </div>
-          </div>
-
+        <div className="lg:col-span-4">
+          <span className="eyebrow block border-b border-rule pb-2">Keahlian</span>
+          <ul className="grid grid-cols-2 gap-x-6">
+            {expertise.map((item) => (
+              <li key={item} className="border-b border-rule py-2 text-[14px] font-medium">
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

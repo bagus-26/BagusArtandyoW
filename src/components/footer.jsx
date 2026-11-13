@@ -1,46 +1,52 @@
 'use client';
 
+import { ArrowUp } from 'lucide-react';
 import { PortofolioData } from '../data/PortofolioData';
-import { ArrowUp, Github, Linkedin, Instagram } from 'lucide-react';
+
+const socials = [
+  { label: 'LinkedIn', href: PortofolioData.socials.linkedin },
+  { label: 'GitHub', href: PortofolioData.socials.github },
+  { label: 'Instagram', href: PortofolioData.socials.instagram },
+  { label: 'Email', href: `mailto:${PortofolioData.socials.email}` },
+];
 
 export default function Footer() {
   return (
-    <footer className="border-t border-stone-200 bg-white py-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+    <footer className="shell mt-24 pb-4 [container-type:inline-size] md:mt-[18vh]">
+      <div className="flex flex-col gap-1 border-t border-rule py-3 sm:flex-row sm:items-center sm:justify-between">
+        <p className="eyebrow">© {new Date().getFullYear()} Bagus Artandyo Witjaksono</p>
 
-          {/* Brand — Name only, no logo box */}
-          <div>
-            <div className="text-stone-700 font-semibold text-sm">{PortofolioData.name}</div>
-            <div className="text-xs text-stone-400">Sarjana Informatika — ITSK Soepraoen</div>
-          </div>
+        <div className="flex flex-wrap items-center gap-x-5">
+          <nav aria-label="Tautan sosial" className="flex flex-wrap items-center gap-x-5">
+            {socials.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target={social.href.startsWith('http') ? '_blank' : undefined}
+                rel={social.href.startsWith('http') ? 'noreferrer' : undefined}
+                className="inline-flex min-h-11 items-center text-[13px] text-muted transition-colors hover:text-ink"
+              >
+                {social.label}
+              </a>
+            ))}
+          </nav>
 
-          {/* Social Links */}
-          <div className="flex items-center gap-3">
-            <a href={PortofolioData.socials.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="text-stone-400 hover:text-stone-700 transition-colors p-2">
-              <Github className="w-5 h-5" />
-            </a>
-            <a href={PortofolioData.socials.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="text-stone-400 hover:text-stone-700 transition-colors p-2">
-              <Linkedin className="w-5 h-5" />
-            </a>
-            <a href={PortofolioData.socials.instagram} target="_blank" rel="noreferrer" aria-label="Instagram" className="text-stone-400 hover:text-stone-700 transition-colors p-2">
-              <Instagram className="w-5 h-5" />
-            </a>
-          </div>
-
-          {/* Back to top */}
           <button
+            type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            aria-label="Kembali ke atas"
-            className="p-2.5 rounded-xl bg-stone-50 border border-stone-200 text-stone-400 hover:text-stone-700 transition-colors"
+            className="inline-flex min-h-11 items-center gap-1.5 text-[13px] text-muted transition-colors hover:text-ink"
           >
-            <ArrowUp className="w-4 h-4" />
+            Kembali ke atas
+            <ArrowUp className="h-3.5 w-3.5" aria-hidden="true" />
           </button>
         </div>
+      </div>
 
-        <div className="mt-6 pt-5 border-t border-stone-100 text-center text-xs text-stone-400">
-          © {new Date().getFullYear()} Bagus Artandyo Witjaksono
-        </div>
+      <div
+        aria-hidden="true"
+        className="mt-10 select-none overflow-hidden whitespace-nowrap pb-[0.08em] text-[10cqw] font-medium leading-[0.9] tracking-[-0.06em] text-ink md:mt-16"
+      >
+        Bagus Artandyo
       </div>
     </footer>
   );

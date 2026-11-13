@@ -1,8 +1,26 @@
 'use client';
 
 import { useState } from 'react';
+import {
+  Mail,
+  Send,
+  Github,
+  Linkedin,
+  Instagram,
+  MapPin,
+  CheckCircle2,
+  Loader2,
+  AlertCircle,
+  ArrowUpRight,
+} from 'lucide-react';
 import { PortofolioData } from '../data/PortofolioData';
-import { Mail, Send, Github, Linkedin, Instagram, MapPin, CheckCircle2, Loader2, AlertCircle } from 'lucide-react';
+import SectionHeading from './section-heading';
+
+const socials = [
+  { label: 'GitHub', href: PortofolioData.socials.github, Icon: Github },
+  { label: 'LinkedIn', href: PortofolioData.socials.linkedin, Icon: Linkedin },
+  { label: 'Instagram', href: PortofolioData.socials.instagram, Icon: Instagram },
+];
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
@@ -32,7 +50,7 @@ export default function Contact() {
       } else {
         const data = await response.json();
         if (data && data.errors && data.errors.length > 0) {
-          setErrorMsg(data.errors.map(err => err.message).join(', '));
+          setErrorMsg(data.errors.map((err) => err.message).join(', '));
         } else {
           setErrorMsg('Gagal mengirim pesan. Silakan coba lagi nanti.');
         }
@@ -45,162 +63,158 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 relative bg-[#f5f3ee]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="contact" className="shell mt-24 md:mt-[18vh]">
+      <SectionHeading title="Kontak" aside="Mari bekerja sama" />
 
-        <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-stone-800">Kontak</h2>
-          <p className="text-stone-500 text-base">
-            Silakan hubungi saya melalui email atau media sosial.
-          </p>
+      <div className="mt-10 grid gap-x-8 gap-y-12 lg:grid-cols-12">
+        <div className="lg:col-span-5">
+          <p className="eyebrow">Email</p>
+          <a
+            href={`mailto:${PortofolioData.socials.email}`}
+            className="group mt-2 inline-block max-w-full text-[clamp(22px,2.4vw,34px)] font-medium leading-tight tracking-[-0.03em]"
+          >
+            <span className="break-all">{PortofolioData.socials.email}</span>
+            <span className="mt-1 block h-px w-full bg-rule transition-colors group-hover:bg-ink" />
+          </a>
+
+          <div className="mt-10">
+            <p className="eyebrow">Lokasi</p>
+            <p className="mt-2 flex items-center gap-2 text-sm text-muted">
+              <MapPin className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
+              Malang, Indonesia
+            </p>
+          </div>
+
+          <nav aria-label="Media sosial" className="mt-8 border-t border-rule">
+            {socials.map(({ label, href, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                className="group flex min-h-12 items-center justify-between gap-4 border-b border-rule py-3 text-sm transition-colors hover:text-muted"
+              >
+                <span className="flex items-center gap-3">
+                  <Icon className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
+                  {label}
+                </span>
+                <ArrowUpRight
+                  className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  aria-hidden="true"
+                />
+              </a>
+            ))}
+          </nav>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-
-          {/* Left: Contact Cards */}
-          <div className="lg:col-span-5 space-y-4">
-
-            <a
-              href={`mailto:${PortofolioData.socials.email}`}
-              className="flex items-center gap-4 p-5 rounded-2xl bg-white border border-stone-200 shadow-sm hover:border-amber-300 transition-all group"
-            >
-              <div className="w-11 h-11 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-500 group-hover:text-white transition-colors">
-                <Mail className="w-5 h-5" />
-              </div>
-              <div>
-                <div className="text-xs text-stone-400 mb-0.5">Email</div>
-                <div className="text-stone-700 text-sm font-medium group-hover:text-amber-700 transition-colors">
-                  {PortofolioData.socials.email}
-                </div>
-              </div>
-            </a>
-
-            <div className="flex items-center gap-4 p-5 rounded-2xl bg-white border border-stone-200 shadow-sm">
-              <div className="w-11 h-11 rounded-xl bg-stone-100 text-stone-500 flex items-center justify-center flex-shrink-0">
-                <MapPin className="w-5 h-5" />
-              </div>
-              <div>
-                <div className="text-xs text-stone-400 mb-0.5">Lokasi</div>
-                <div className="text-stone-700 text-sm font-medium">Malang, Indonesia</div>
-              </div>
+        <div className="lg:col-span-7">
+          {submitted ? (
+            <div role="status" className="border-y border-rule py-14 text-center">
+              <CheckCircle2 className="mx-auto h-8 w-8" strokeWidth={1.25} aria-hidden="true" />
+              <p className="mt-4 font-medium">Pesan terkirim.</p>
+              <p className="mt-1 text-sm text-muted">
+                Terima kasih, saya akan segera merespons ke email Anda.
+              </p>
             </div>
-
-            <div className="p-5 rounded-2xl bg-white border border-stone-200 shadow-sm">
-              <div className="text-xs text-stone-400 mb-3">Media Sosial</div>
-              <div className="flex items-center gap-3">
-                <a href={PortofolioData.socials.github} target="_blank" rel="noreferrer" aria-label="GitHub"
-                  className="w-10 h-10 rounded-xl bg-stone-50 border border-stone-200 flex items-center justify-center text-stone-500 hover:text-stone-800 hover:border-stone-400 transition-all">
-                  <Github className="w-5 h-5" />
-                </a>
-                <a href={PortofolioData.socials.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"
-                  className="w-10 h-10 rounded-xl bg-stone-50 border border-stone-200 flex items-center justify-center text-stone-500 hover:text-stone-800 hover:border-stone-400 transition-all">
-                  <Linkedin className="w-5 h-5" />
-                </a>
-                <a href={PortofolioData.socials.instagram} target="_blank" rel="noreferrer" aria-label="Instagram"
-                  className="w-10 h-10 rounded-xl bg-stone-50 border border-stone-200 flex items-center justify-center text-stone-500 hover:text-stone-800 hover:border-stone-400 transition-all">
-                  <Instagram className="w-5 h-5" />
-                </a>
+          ) : (
+            <form onSubmit={handleSubmit}>
+              <div className="flex items-baseline justify-between gap-4">
+                <h3 className="text-lg font-medium tracking-[-0.02em]">Kirim pesan</h3>
+                <Mail className="h-4 w-4 text-muted" strokeWidth={1.5} aria-hidden="true" />
               </div>
-            </div>
-          </div>
 
-          {/* Right: Form */}
-          <div className="lg:col-span-7">
-            <div className="bg-white p-8 rounded-3xl border border-stone-200 shadow-sm">
-              <h3 className="text-xl font-bold text-stone-800 mb-6">Kirim Pesan</h3>
-
-              {submitted ? (
-                <div className="p-6 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-3">
-                  <CheckCircle2 className="w-10 h-10 text-emerald-500 mx-auto" />
-                  <p className="text-stone-700 font-semibold">Pesan terkirim!</p>
-                  <p className="text-stone-500 text-sm">Terima kasih, saya akan segera merespons ke email Anda.</p>
+              {errorMsg && (
+                <div
+                  role="alert"
+                  className="mt-6 flex items-start gap-2 border-l-2 border-rose-700 pl-3 text-sm text-rose-700"
+                >
+                  <AlertCircle className="mt-0.5 h-4 w-4 flex-none" aria-hidden="true" />
+                  <span>{errorMsg}</span>
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  {errorMsg && (
-                    <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-sm flex items-center gap-2">
-                      <AlertCircle className="w-4 h-4 flex-shrink-0" />
-                      <span>{errorMsg}</span>
-                    </div>
-                  )}
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="contact-name" className="block text-xs text-stone-400 mb-2">Nama</label>
-                      <input
-                        id="contact-name"
-                        type="text"
-                        name="name"
-                        required
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="Nama lengkap"
-                        className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 text-stone-700 placeholder-stone-400 focus:outline-none focus:border-amber-400 transition-colors text-sm"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="contact-email" className="block text-xs text-stone-400 mb-2">Email</label>
-                      <input
-                        id="contact-email"
-                        type="email"
-                        name="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="email@contoh.com"
-                        className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 text-stone-700 placeholder-stone-400 focus:outline-none focus:border-amber-400 transition-colors text-sm"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="contact-subject" className="block text-xs text-stone-400 mb-2">Subjek</label>
-                    <input
-                      id="contact-subject"
-                      type="text"
-                      name="subject"
-                      required
-                      value={formData.subject}
-                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      placeholder="Perihal pesan"
-                      className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 text-stone-700 placeholder-stone-400 focus:outline-none focus:border-amber-400 transition-colors text-sm"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="contact-message" className="block text-xs text-stone-400 mb-2">Pesan</label>
-                    <textarea
-                      id="contact-message"
-                      rows={5}
-                      name="message"
-                      required
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Tulis pesan Anda di sini..."
-                      className="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 text-stone-700 placeholder-stone-400 focus:outline-none focus:border-amber-400 transition-colors text-sm resize-none"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="w-full py-3.5 rounded-xl bg-stone-800 text-white font-semibold text-sm shadow-md hover:bg-stone-700 hover:scale-[1.01] transition-all flex items-center justify-center gap-2 disabled:opacity-50"
-                  >
-                    {loading ? (
-                      <>
-                        <Loader2 className="w-4 h-4 animate-spin" /> Mengirim...
-                      </>
-                    ) : (
-                      <>
-                        <Send className="w-4 h-4" /> Kirim Pesan
-                      </>
-                    )}
-                  </button>
-                </form>
               )}
-            </div>
-          </div>
 
+              <div className="mt-8 grid gap-x-6 gap-y-6 sm:grid-cols-2">
+                <div>
+                  <label htmlFor="contact-name" className="eyebrow mb-1 block">
+                    Nama
+                  </label>
+                  <input
+                    id="contact-name"
+                    type="text"
+                    name="name"
+                    autoComplete="name"
+                    required
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    placeholder="Nama lengkap"
+                    className="field"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="contact-email" className="eyebrow mb-1 block">
+                    Email
+                  </label>
+                  <input
+                    id="contact-email"
+                    type="email"
+                    name="email"
+                    autoComplete="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    placeholder="email@contoh.com"
+                    className="field"
+                  />
+                </div>
+                <div className="sm:col-span-2">
+                  <label htmlFor="contact-subject" className="eyebrow mb-1 block">
+                    Subjek
+                  </label>
+                  <input
+                    id="contact-subject"
+                    type="text"
+                    name="subject"
+                    required
+                    value={formData.subject}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                    placeholder="Perihal pesan"
+                    className="field"
+                  />
+                </div>
+                <div className="sm:col-span-2">
+                  <label htmlFor="contact-message" className="eyebrow mb-1 block">
+                    Pesan
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    rows={5}
+                    name="message"
+                    required
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    placeholder="Tulis pesan Anda di sini..."
+                    className="field resize-y"
+                  />
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="mt-8 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-ink px-7 text-sm font-medium text-paper transition-colors hover:bg-[#2b2b28] disabled:opacity-50 sm:w-auto"
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> Mengirim...
+                  </>
+                ) : (
+                  <>
+                    <Send className="h-4 w-4" aria-hidden="true" /> Kirim pesan
+                  </>
+                )}
+              </button>
+            </form>
+          )}
         </div>
       </div>
     </section>

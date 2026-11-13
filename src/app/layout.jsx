@@ -13,9 +13,12 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://api.fontshare.com" />
+        <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="anonymous" />
+        <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
       </head>
-      <body className="bg-[#faf9f6] text-stone-800 antialiased selection:bg-amber-200 selection:text-amber-900 min-h-screen relative overflow-x-hidden">
+      <body className="bg-paper text-ink antialiased selection:bg-ink selection:text-paper min-h-screen relative overflow-x-hidden">
         {children}
       </body>
     </html>

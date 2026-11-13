@@ -67,7 +67,7 @@ export default function Contact() {
       <SectionHeading title="Kontak" aside="Mari bekerja sama" />
 
       <div className="mt-10 grid gap-x-8 gap-y-12 lg:grid-cols-12">
-        <div className="lg:col-span-5">
+        <div data-reveal className="lg:col-span-5">
           <p className="eyebrow">Email</p>
           <a
             href={`mailto:${PortofolioData.socials.email}`}
@@ -92,7 +92,7 @@ export default function Contact() {
                 href={href}
                 target="_blank"
                 rel="noreferrer"
-                className="group flex min-h-12 items-center justify-between gap-4 border-b border-rule py-3 text-sm transition-colors hover:text-muted"
+                className="group -mx-3 flex min-h-12 items-center justify-between gap-4 border-b border-rule px-3 py-3 text-sm transition-colors hover:bg-ink hover:text-paper focus-visible:bg-ink focus-visible:text-paper"
               >
                 <span className="flex items-center gap-3">
                   <Icon className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
@@ -107,7 +107,7 @@ export default function Contact() {
           </nav>
         </div>
 
-        <div className="lg:col-span-7">
+        <div data-reveal style={{ '--d': 1 }} className="lg:col-span-7">
           {submitted ? (
             <div role="status" className="border-y border-rule py-14 text-center">
               <CheckCircle2 className="mx-auto h-8 w-8" strokeWidth={1.25} aria-hidden="true" />

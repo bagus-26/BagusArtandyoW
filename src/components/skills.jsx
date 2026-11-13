@@ -17,7 +17,7 @@ export default function Skills() {
       <SectionHeading title="Keahlian & ekosistem" aside="Stack — tools — minat" />
 
       <div className="mt-10 grid gap-x-8 gap-y-12 lg:grid-cols-12">
-        <div className="grid gap-8 sm:grid-cols-3 lg:col-span-7">
+        <div data-reveal className="grid gap-8 sm:grid-cols-3 lg:col-span-7">
           {groups.map((group, idx) => (
             <div key={group.label}>
               <div className="mb-1 flex items-baseline justify-between gap-3 border-b border-rule pb-2">
@@ -37,7 +37,7 @@ export default function Skills() {
           ))}
         </div>
 
-        <div className="lg:col-span-5">
+        <div data-reveal style={{ '--d': 1 }} className="lg:col-span-5">
           <div className="mb-1 flex items-baseline justify-between gap-3 border-b border-rule pb-2">
             <h3 className="eyebrow">Bahasa &amp; framework</h3>
             <span className="eyebrow" aria-hidden="true">

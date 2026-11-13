@@ -18,11 +18,14 @@ export default function Projects() {
             </h3>
             <span className="eyebrow text-right">{featured.category}</span>
           </div>
-          <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-cover">
+          <div
+            data-reveal="clip"
+            className="group aspect-[4/5] overflow-hidden rounded-2xl bg-cover"
+          >
             <img
               src={featured.image}
               alt={`Poster ${featured.title}`}
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.03]"
             />
           </div>
           <div className="mt-3 flex items-baseline justify-between gap-4">
@@ -33,7 +36,7 @@ export default function Projects() {
           </div>
         </article>
 
-        <div className="lg:col-span-6 lg:pt-[9vh]">
+        <div data-reveal style={{ '--d': 1 }} className="lg:col-span-6 lg:pt-[9vh]">
           <p className="text-[clamp(20px,2vw,28px)] leading-[1.3] tracking-[-0.02em]">
             {featured.desc}
           </p>
@@ -74,7 +77,11 @@ export default function Projects() {
       <ul className="mt-20 border-t border-rule">
         {rest.map((project, idx) => (
           <li key={project.id}>
-            <div className="grid grid-cols-[32px_1fr_auto] items-baseline gap-4 border-b border-rule py-6 md:grid-cols-[60px_1.1fr_1fr_auto] md:gap-6">
+            <div
+              data-reveal
+              style={{ '--d': idx }}
+              className="grid grid-cols-[32px_1fr_auto] items-baseline gap-4 border-b border-rule py-6 md:grid-cols-[60px_1.1fr_1fr_auto] md:gap-6"
+            >
               <span className="font-mono text-[11px] text-muted" aria-hidden="true">
                 {String(idx + 2).padStart(2, '0')}
               </span>

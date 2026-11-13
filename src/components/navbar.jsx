@@ -18,7 +18,7 @@ export default function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-paper via-paper/85 to-transparent" />
 
-      <div className="shell relative flex items-center justify-between gap-2 pt-4">
+      <div className="load-down shell relative flex items-center justify-between gap-2 pt-4">
         <div className="flex min-w-0 items-center gap-[3px] overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           <a href="#about" className="pill pill-dark">
             Bagus Artandyo
@@ -52,7 +52,7 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <div id="mobile-menu" className="shell relative mt-2 sm:hidden">
+        <div id="mobile-menu" className="menu-in shell relative mt-2 sm:hidden">
           <div className="rounded-2xl border border-rule bg-paper p-2 shadow-lg">
             {navLinks.map((link, idx) => (
               <a

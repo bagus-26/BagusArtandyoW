@@ -44,6 +44,7 @@ export default function Footer() {
 
       <div
         aria-hidden="true"
+        data-reveal="clip"
         className="mt-10 select-none overflow-hidden whitespace-nowrap pb-[0.08em] text-[10cqw] font-medium leading-[0.9] tracking-[-0.06em] text-ink md:mt-16"
       >
         Bagus Artandyo

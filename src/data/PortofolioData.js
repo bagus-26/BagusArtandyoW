@@ -89,6 +89,43 @@ export const PortofolioData = {
       tags: ["Hackathon", "System Architecture", "Waste Management"],
       liveUrl: "",
       githubUrl: ""
+    },
+    {
+      id: 5,
+      title: "MakanYuk!",
+      category: "Project Manager",
+      subtitle: "Aplikasi mobile pemesanan makanan & minuman siap saji",
+      desc: "Proyek UAS Semester 5 — aplikasi mobile pemesanan makanan dan minuman siap saji berbasis Flutter dengan REST API Laravel + MySQL: katalog, keranjang dengan varian porsi dan tingkat pedas, checkout kurir internal, login Google, dan pembayaran Xendit. Sebagai ketua kelompok saya memimpin 6 anggota tim sekaligus membangun fondasi backend, Flutter, dan integrasinya.",
+      tags: ["Flutter", "Laravel", "REST API", "MySQL", "Google Auth", "Xendit"],
+      liveUrl: "",
+      githubUrl: "https://github.com/bagus-26/ProjectUTS-PAPB"
+    }
+  ],
+
+  certifications: [
+    {
+      id: 1,
+      title: "Python for Data Science & AI: Hands-On Development",
+      issuer: "IBM · Coursera",
+      date: "19 Mei 2026",
+      credential: "0YAQDB9VEIVN",
+      desc: "Kursus resmi IBM melalui Coursera dengan latihan langsung menggunakan Python untuk data science dan AI — menulis kode Python, mengolah data, dan menerapkan dasar alur kerja AI. Sertifikat dapat diverifikasi publik melalui Coursera.",
+      tags: ["Python", "Data Science", "AI"],
+      image: "/sertifikat/sertifikat-coursera-ibm-python.jpg",
+      pdf: "/sertifikat/sertifikat-coursera-ibm-python.pdf",
+      verifyUrl: "https://coursera.org/verify/0YAQDB9VEIVN"
+    },
+    {
+      id: 2,
+      title: "Sertifikat Kompetensi — Internet of Things & 3D Printing untuk Alat Kesehatan",
+      issuer: "LSPM ITSK RS dr. Soepraoen Malang",
+      date: "12 Desember 2025",
+      credential: "LSPM / S / 16 / XI / 2026",
+      desc: "Sertifikasi kompetensi bidang IoT dan 3D printing untuk pengembangan alat kesehatan, dengan studi kasus Thermo Gun. Mencakup 8 unit kompetensi: perencanaan dan desain sistem alat kesehatan, rangkaian elektronik, pengujian dan kalibrasi sensor, integrasi sistem elektronik, desain mekanikal dan casing 3D, proses manufaktur 3D printing, assembly, pengujian dan troubleshooting, serta pelaporan dan presentasi proyek. Sertifikat dan daftar kompetensinya tergabung dalam satu dokumen.",
+      tags: ["IoT", "3D Printing", "Sensor", "Alat Kesehatan"],
+      image: "/sertifikat/sertifikat-kompetensi-iot-3d-printing.jpg",
+      pdf: "/sertifikat/sertifikat-kompetensi-iot-3d-printing.pdf",
+      verifyUrl: ""
     }
   ]
 };

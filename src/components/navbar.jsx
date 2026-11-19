@@ -8,6 +8,7 @@ const navLinks = [
   { name: 'Tentang', href: '#about' },
   { name: 'Keahlian', href: '#skills' },
   { name: 'Proyek', href: '#projects' },
+  { name: 'Sertifikasi', href: '#certifications' },
   { name: 'Kontak', href: '#contact' },
 ];
 
@@ -71,7 +72,7 @@ export default function Navbar() {
               className="flex min-h-11 items-center justify-between rounded-xl px-4 text-sm font-medium text-ink transition-colors hover:bg-cover"
             >
               Email
-              <span className="eyebrow">05</span>
+              <span className="eyebrow">0{navLinks.length + 1}</span>
             </a>
           </div>
         </div>

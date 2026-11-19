@@ -5,10 +5,11 @@ import SectionHeading from './section-heading';
 
 export default function Projects() {
   const [featured, ...rest] = PortofolioData.projects;
+  const totalProjects = String(PortofolioData.projects.length).padStart(2, '0');
 
   return (
     <section id="projects" className="shell mt-24 md:mt-[18vh]">
-      <SectionHeading title="Proyek" aside="Karya terpilih — 01 / 04" />
+      <SectionHeading title="Proyek" aside={`Karya terpilih — 01 / ${totalProjects}`} />
 
       <div className="mt-10 grid gap-x-8 gap-y-10 lg:grid-cols-12">
         <article className="lg:col-span-6">
@@ -31,7 +32,7 @@ export default function Projects() {
           <div className="mt-3 flex items-baseline justify-between gap-4">
             <span className="eyebrow">{featured.subtitle}</span>
             <span className="eyebrow shrink-0 whitespace-nowrap" aria-hidden="true">
-              01 / 04
+              01 / {totalProjects}
             </span>
           </div>
         </article>

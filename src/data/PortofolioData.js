@@ -77,6 +77,7 @@ export const PortofolioData = {
       subtitle: "Pemantauan layanan kesehatan",
       desc: "Mengimplementasikan rute REST API, model database, dan integrasi frontend untuk pemantauan layanan kesehatan.",
       tags: ["REST API", "Database", "Frontend", "Healthcare"],
+      image: "/carevisitmonitor.jpg",
       liveUrl: "",
       githubUrl: ""
     },
@@ -97,6 +98,7 @@ export const PortofolioData = {
       subtitle: "Aplikasi mobile pemesanan makanan & minuman siap saji",
       desc: "Proyek UAS Semester 5 — aplikasi mobile pemesanan makanan dan minuman siap saji berbasis Flutter dengan REST API Laravel + MySQL: katalog, keranjang dengan varian porsi dan tingkat pedas, checkout kurir internal, login Google, dan pembayaran Xendit. Sebagai ketua kelompok saya memimpin 6 anggota tim sekaligus membangun fondasi backend, Flutter, dan integrasinya.",
       tags: ["Flutter", "Laravel", "REST API", "MySQL", "Google Auth", "Xendit"],
+      image: "/makanyuk-logo.jpg",
       liveUrl: "",
       githubUrl: "https://github.com/bagus-26/ProjectUTS-PAPB"
     }

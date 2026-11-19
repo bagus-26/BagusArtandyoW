@@ -81,15 +81,35 @@ export default function Projects() {
             <div
               data-reveal
               style={{ '--d': idx }}
-              className="grid grid-cols-[32px_1fr_auto] items-baseline gap-4 border-b border-rule py-6 md:grid-cols-[60px_1.1fr_1fr_auto] md:gap-6"
+              className="grid grid-cols-[32px_1fr_auto] items-baseline gap-4 border-b border-rule py-6 md:grid-cols-[60px_120px_1.1fr_1fr_auto] md:gap-6"
             >
               <span className="font-mono text-[11px] text-muted" aria-hidden="true">
                 {String(idx + 2).padStart(2, '0')}
               </span>
+              {project.image ? (
+                <img
+                  src={project.image}
+                  alt=""
+                  loading="lazy"
+                  className="hidden aspect-[3/2] w-[120px] self-start rounded-lg border border-rule object-cover md:block"
+                />
+              ) : (
+                <span className="hidden md:block" aria-hidden="true" />
+              )}
               <div>
-                <h3 className="text-xl font-medium tracking-[-0.03em] md:text-2xl">
-                  {project.title}
-                </h3>
+                <div className="flex items-center gap-3">
+                  {project.image && (
+                    <img
+                      src={project.image}
+                      alt=""
+                      loading="lazy"
+                      className="h-11 w-11 flex-none rounded-lg border border-rule object-cover md:hidden"
+                    />
+                  )}
+                  <h3 className="text-xl font-medium tracking-[-0.03em] md:text-2xl">
+                    {project.title}
+                  </h3>
+                </div>
                 <p className="mt-1 text-[13px] text-muted md:hidden">{project.subtitle}</p>
                 <p className="mt-1 font-mono text-[10px] uppercase leading-relaxed tracking-[0.08em] text-muted">
                   {project.tags.join(' · ')}
